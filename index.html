@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HT17 — Cisco Data Fabric: Lead the Data Conversation in the AI Era</title>
+<style>
+  :root {
+    --bg: #0b1120;
+    --panel: #161e2f;
+    --border: #2d3a52;
+    --text: #e5e9f0;
+    --text-dim: #94a3b8;
+    --blue: #60a5fa;
+    --pink: #e879f9;
+    --amber: #fbbf24;
+    --orange: #fdba74;
+    --cyan: #67e8f9;
+    --violet: #c4b5fd;
+    --mint: #6ee7b7;
+    --green: #86efac;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 40px 20px 60px;
+  }
+  h1 { text-align: center; font-size: 28px; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: var(--text-dim); margin-bottom: 36px; font-size: 14px; }
+
+  .diagram { max-width: 980px; margin: 0 auto; }
+
+  .platform {
+    background: linear-gradient(135deg, rgba(96,165,250,0.12), rgba(232,121,249,0.12));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 24px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .platform .title { font-size: 20px; font-weight: 800; }
+  .platform .sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .pill-row { display: flex; justify-content: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .pill {
+    font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.03);
+  }
+
+  .split { display: flex; gap: 20px; margin-top: 10px; }
+  .branch { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .branch-label {
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 0 10px 0;
+  }
+  .branch-label.core { color: var(--blue); }
+  .branch-label.fed { color: var(--pink); }
+  .connector-line { width: 2px; height: 20px; background: var(--border); }
+
+  .tier-stack { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+  .tier {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+  .tier .desc { display: block; font-weight: 400; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .tier.index { background: rgba(96,165,250,0.06); color: var(--blue); }
+  .tier.raw { background: rgba(110,231,183,0.06); color: var(--mint); }
+
+  .sub-links { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+  .sub-link {
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 9px;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .sub-link:hover { color: var(--text); border-color: var(--blue); background: rgba(255,255,255,0.09); }
+
+  .category {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.015);
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .category .cat-title { font-weight: 800; font-size: 13px; margin-bottom: 8px; }
+  .store-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .store-wrap { flex: 1 1 30%; min-width: 90px; }
+  .store {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 8px 6px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .store.s3 { background: rgba(245,158,11,0.1); color: var(--amber); }
+  .store.blob { background: rgba(56,189,248,0.1); color: var(--cyan); }
+  .store.adls { background: rgba(59,130,246,0.1); color: #93c5fd; }
+  .store.ddss { background: rgba(34,197,94,0.1); color: var(--green); }
+  .store.dbx { background: rgba(251,113,133,0.1); color: #fda4af; }
+  .store.snow { background: rgba(56,189,248,0.1); color: #7dd3fc; }
+  .store.asl { background: rgba(249,115,22,0.1); color: var(--orange); }
+
+  .footer-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: #52607a;
+  }
+
+  @media (max-width: 700px) {
+    .split { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>PLATFORM HUB DEMOS</h1>
+  <div class="subtitle">CDF Architecture — One Analytics Platform, Many Data Stores — Federated Search</div>
+
+  <div class="diagram">
+    <div class="platform">
+      <div class="title">Cisco Data Fabric powered by Splunk Platform</div>
+      <div class="sub">SPL2 search, reasoning, AI, and knowledge across indexed and federated data</div>
+      <div class="pill-row">
+        <span class="pill">Search</span>
+        <span class="pill">Reasoning</span>
+        <span class="pill">AI</span>
+        <span class="pill">Knowledge</span>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="branch">
+        <div class="connector-line"></div>
+        <div class="branch-label core">CORE SEARCH</div>
+        <div class="tier-stack">
+          <div class="tier index">Splunk Index<span class="desc">Highest-performance operational tier</span></div>
+          <div>
+            <div class="tier raw">Machine Data Lake<span class="desc">CDF MDL — Splunk-managed landing &amp; lakehouse tier</span></div>
+            <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/8x130cj0" target="_blank" rel="noopener">Navvatic</a><a class="sub-link" href="https://cisco-my.sharepoint.com/:v:/r/personal/nzambo_cisco_com/Documents/Videos/Clipchamp/MDL%20Landing%20Overview%20and%20Demo/Exports/MDL%20Landing%20Overview%20and%20Demo.mp4?csf=1&amp;web=1&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&amp;e=ag46kd" target="_blank" rel="noopener">Video</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="branch">
+        <div class="connector-line"></div>
+        <div class="branch-label fed">FEDERATED SEARCH</div>
+
+        <div class="category">
+          <div class="cat-title">Object Stores</div>
+          <div class="store-row">
+            <div class="store-wrap">
+              <div class="store s3">AWS S3</div>
+              <div class="sub-links"><a class="sub-link" href="#">Navvatic</a><a class="sub-link" href="#">Video</a></div>
+            </div>
+            <div class="store-wrap">
+              <div class="store blob">Azure ABS</div>
+              <div class="sub-links"><a class="sub-link" href="#">Navvatic</a><a class="sub-link" href="#">Video</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="cat-title">Data Lakes</div>
+          <div class="store-row">
+            <div class="store-wrap">
+              <div class="store adls">Azure Data Lake</div>
+              <div class="sub-links"><a class="sub-link" href="#">Navvatic</a><a class="sub-link" href="#">Video</a></div>
+            </div>
+            <div class="store-wrap">
+              <div class="store ddss">Splunk DDSS</div>
+              <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/fur04x6" target="_blank" rel="noopener">Navvatic</a><a class="sub-link" href="https://app.vidcast.io/share/bcf65c50-6528-46c6-b5bf-1794df1fcba3" target="_blank" rel="noopener">Video</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="cat-title">Lakehouses</div>
+          <div class="store-row">
+            <div class="store-wrap">
+              <div class="store snow">SnowFlake</div>
+              <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/i5z071m" target="_blank" rel="noopener">Navvatic</a><a class="sub-link" href="https://app.vidcast.io/share/32589e80-23f7-43a8-bfa4-d5105799b9a3" target="_blank" rel="noopener">Video</a></div>
+            </div>
+            <div class="store-wrap">
+              <div class="store dbx">Databricks</div>
+              <div class="sub-links"><a class="sub-link" href="#">Navvatic</a><a class="sub-link" href="#">Video</a></div>
+            </div>
+            <div class="store-wrap">
+              <div class="store asl">Amazon Security Lake</div>
+              <div class="sub-links"><a class="sub-link" href="#">Navvatic</a><a class="sub-link" href="#">Video</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-labels">
+      <span>SPLUNK-MANAGED TIERS</span>
+      <span>CUSTOMER-MANAGED DATA STORES</span>
+    </div>
+  </div>
+
+</body>
+</html>
