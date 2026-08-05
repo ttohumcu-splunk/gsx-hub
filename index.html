@@ -90,7 +90,23 @@
     transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   }
   .sub-link:hover { color: var(--text); border-color: var(--blue); background: rgba(255,255,255,0.09); }
-  .sub-link.soon { opacity: 0.45; cursor: default; pointer-events: none; }
+  .sub-link-wrap { position: relative; display: inline-block; }
+  .sub-link.soon { opacity: 0.5; cursor: default; pointer-events: none; }
+  .soon-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--pink);
+    color: #0b1120;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    padding: 1px 4px;
+    border-radius: 4px;
+    white-space: nowrap;
+    line-height: 1.3;
+    pointer-events: none;
+  }
 
   .category {
     border: 1px solid var(--border);
@@ -229,11 +245,11 @@
           <div class="store-row">
             <div class="store-wrap">
               <div class="store s3">AWS S3</div>
-              <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi52u04z008r04lh3v0w5r4z&amp;s=0" target="_blank" rel="noopener">Navvatic</a><span class="sub-link soon">Coming soon</span></div>
+              <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi52u04z008r04lh3v0w5r4z&amp;s=0" target="_blank" rel="noopener">Navvatic</a><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
             <div class="store-wrap">
               <div class="store blob">Azure ABS</div>
-              <div class="sub-links"><span class="sub-link soon">Coming soon</span><span class="sub-link soon">Coming soon</span></div>
+              <div class="sub-links"><span class="sub-link-wrap"><span class="sub-link soon">Navvatic</span><span class="soon-badge">SOON</span></span><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
           </div>
         </div>
@@ -243,7 +259,7 @@
           <div class="store-row">
             <div class="store-wrap">
               <div class="store adls">Azure Data Lake</div>
-              <div class="sub-links"><span class="sub-link soon">Coming soon</span><span class="sub-link soon">Coming soon</span></div>
+              <div class="sub-links"><span class="sub-link-wrap"><span class="sub-link soon">Navvatic</span><span class="soon-badge">SOON</span></span><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
             <div class="store-wrap">
               <div class="store ddss">Splunk DDSS</div>
@@ -261,11 +277,11 @@
             </div>
             <div class="store-wrap">
               <div class="store dbx">Databricks</div>
-              <div class="sub-links"><span class="sub-link soon">Coming soon</span><span class="sub-link soon">Coming soon</span></div>
+              <div class="sub-links"><span class="sub-link-wrap"><span class="sub-link soon">Navvatic</span><span class="soon-badge">SOON</span></span><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
             <div class="store-wrap">
               <div class="store asl">Amazon Security Lake</div>
-              <div class="sub-links"><span class="sub-link soon">Coming soon</span><span class="sub-link soon">Coming soon</span></div>
+              <div class="sub-links"><span class="sub-link-wrap"><span class="sub-link soon">Navvatic</span><span class="soon-badge">SOON</span></span><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
           </div>
         </div>
