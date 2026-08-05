@@ -133,9 +133,63 @@
   @media (max-width: 700px) {
     .split { flex-direction: column; }
   }
+
+  #auth-gate {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  #auth-gate .box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 36px;
+    width: 280px;
+    text-align: center;
+  }
+  #auth-gate h2 { font-size: 18px; margin: 0 0 16px; }
+  #auth-gate input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+    font-size: 14px;
+  }
+  #auth-gate button {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    background: var(--blue);
+    color: #0b1120;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #auth-gate .error { color: var(--pink); font-size: 12px; margin-top: 8px; min-height: 14px; }
+  #page-content { display: none; }
 </style>
 </head>
 <body>
+
+  <div id="auth-gate">
+    <div class="box">
+      <h2>Restricted Access</h2>
+      <input type="text" id="auth-user" placeholder="Username" autocomplete="username">
+      <input type="password" id="auth-pass" placeholder="Password" autocomplete="current-password">
+      <button id="auth-submit">Enter</button>
+      <div class="error" id="auth-error"></div>
+    </div>
+  </div>
+
+  <div id="page-content">
 
   <h1>PLATFORM HUB DEMOS</h1>
   <div class="subtitle">CDF Architecture — One Analytics Platform, Many Data Stores — Federated Search</div>
@@ -222,6 +276,41 @@
       <span>CUSTOMER-MANAGED DATA STORES</span>
     </div>
   </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var VALID_USER = "splunker";
+      var VALID_PASS = "hubdemo";
+      var gate = document.getElementById("auth-gate");
+      var content = document.getElementById("page-content");
+
+      function unlock() {
+        gate.style.display = "none";
+        content.style.display = "block";
+      }
+
+      if (sessionStorage.getItem("hubdemo-auth") === "ok") {
+        unlock();
+      }
+
+      document.getElementById("auth-submit").addEventListener("click", function () {
+        var user = document.getElementById("auth-user").value;
+        var pass = document.getElementById("auth-pass").value;
+        if (user === VALID_USER && pass === VALID_PASS) {
+          sessionStorage.setItem("hubdemo-auth", "ok");
+          unlock();
+        } else {
+          document.getElementById("auth-error").textContent = "Incorrect username or password.";
+        }
+      });
+
+      document.getElementById("auth-pass").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") document.getElementById("auth-submit").click();
+      });
+    })();
+  </script>
 
 </body>
 </html>
