@@ -30,6 +30,10 @@
   h1 { text-align: center; font-size: 28px; margin-bottom: 4px; }
   .subtitle { text-align: center; color: var(--text-dim); margin-bottom: 36px; font-size: 14px; }
 
+  .brand-lockup { display: flex; justify-content: center; align-items: center; gap: 28px; margin-bottom: 20px; }
+  .brand-lockup .brand-item { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: 0.02em; color: var(--text); }
+  .brand-lockup svg { display: block; }
+
   .diagram { max-width: 980px; margin: 0 auto; }
 
   .platform {
@@ -73,6 +77,8 @@
     border: 1px solid var(--border);
     text-align: center;
   }
+  .tier .tier-label { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+  .tier svg { flex: 0 0 auto; display: block; }
   .tier .desc { display: block; font-weight: 400; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   .tier.index { background: rgba(96,165,250,0.06); color: var(--blue); }
   .tier.raw { background: rgba(110,231,183,0.06); color: var(--mint); }
@@ -120,7 +126,10 @@
   .store-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .store-wrap { flex: 1 1 30%; min-width: 90px; }
   .store {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     text-decoration: none;
     text-align: center;
     font-size: 12px;
@@ -129,6 +138,7 @@
     border-radius: 10px;
     border: 1px solid var(--border);
   }
+  .store svg { flex: 0 0 auto; display: block; }
   .store.s3 { background: rgba(245,158,11,0.1); color: var(--amber); }
   .store.blob { background: rgba(56,189,248,0.1); color: var(--cyan); }
   .store.adls { background: rgba(59,130,246,0.1); color: #93c5fd; }
@@ -327,6 +337,30 @@
 
   <div id="page-content">
 
+  <div class="brand-lockup">
+    <span class="brand-item">
+      <svg width="40" height="27" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="6" width="1.6" height="4" fill="#e5e9f0"/>
+        <rect x="2.6" y="4" width="1.6" height="8" fill="#e5e9f0"/>
+        <rect x="5.2" y="1" width="1.6" height="14" fill="#e5e9f0"/>
+        <rect x="7.8" y="4" width="1.6" height="8" fill="#e5e9f0"/>
+        <rect x="10.4" y="6" width="1.6" height="4" fill="#e5e9f0"/>
+        <rect x="13" y="4" width="1.6" height="8" fill="#e5e9f0"/>
+        <rect x="15.6" y="1" width="1.6" height="14" fill="#e5e9f0"/>
+        <rect x="18.2" y="4" width="1.6" height="8" fill="#e5e9f0"/>
+        <rect x="20.8" y="6" width="1.6" height="4" fill="#e5e9f0"/>
+      </svg>
+      CISCO
+    </span>
+    <span class="brand-item">
+      <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.5" y="0.5" width="23" height="23" rx="5" fill="#000000"/>
+        <path d="M8 6.5L16 12L8 17.5" stroke="#ff671f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      splunk&gt;
+    </span>
+  </div>
+
   <h1>PLATFORM HUB DEMOS</h1>
   <div class="subtitle">CDF Architecture — One Analytics Platform, Many Data Stores — Federated Search</div>
 
@@ -347,9 +381,9 @@
         <div class="connector-line"></div>
         <div class="branch-label core">CORE SEARCH</div>
         <div class="tier-stack">
-          <div class="tier index">Splunk Index<span class="desc">Highest-performance operational tier</span></div>
+          <div class="tier index"><span class="tier-label"><svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="23" height="23" rx="5" fill="#000000"/><path d="M8 6.5L16 12L8 17.5" stroke="#ff671f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Splunk Index</span><span class="desc">Highest-performance operational tier</span></div>
           <div>
-            <div class="tier raw">Machine Data Lake<span class="desc">CDF MDL — Splunk-managed landing &amp; lakehouse tier</span></div>
+            <div class="tier raw"><span class="tier-label"><svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="23" height="23" rx="5" fill="#000000"/><path d="M8 6.5L16 12L8 17.5" stroke="#ff671f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>Machine Data Lake</span><span class="desc">CDF MDL — Splunk-managed landing &amp; lakehouse tier</span></div>
             <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/8x130cj0" target="_blank" rel="noopener">Navvatic</a><a class="sub-link" href="https://app.vidcast.io/share/5cc8f689-ff75-465f-89d3-9ccdaa818f03?pageShareId=f4d2e420-5d08-44d0-89c6-a4a2375e7f83&amp;autoplay=1" target="_blank" rel="noopener">Video</a></div>
           </div>
         </div>
@@ -363,11 +397,25 @@
           <div class="cat-title">Object Stores</div>
           <div class="store-row">
             <div class="store-wrap">
-              <div class="store s3">Amazon S3</div>
+              <div class="store s3">
+                <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 15c4 2.4 12 2.4 16 0" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                  <path d="M17 13.3l2.6 1.2-1 2.7" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                Amazon S3
+              </div>
               <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/at9g0gx0" target="_blank" rel="noopener">Navvatic</a><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
             <div class="store-wrap">
-              <div class="store blob">Microsoft Azure Blob Storage</div>
+              <div class="store blob">
+                <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
+                  <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
+                  <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
+                  <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
+                </svg>
+                Microsoft Azure Blob Storage
+              </div>
               <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/k1t05vc?g=cmsi05yev000c0ajid8joe9ov&amp;s=68" target="_blank" rel="noopener">Navvatic</a><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
           </div>
@@ -377,11 +425,25 @@
           <div class="cat-title">Data Lakes</div>
           <div class="store-row">
             <div class="store-wrap">
-              <div class="store adls">Microsoft Azure Data Lake</div>
+              <div class="store adls">
+                <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
+                  <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
+                  <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
+                  <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
+                </svg>
+                Microsoft Azure Data Lake
+              </div>
               <div class="sub-links"><span class="sub-link-wrap"><span class="sub-link soon">Navvatic</span><span class="soon-badge">SOON</span></span><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
             <div class="store-wrap">
-              <div class="store ddss">Splunk DDSS</div>
+              <div class="store ddss">
+                <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="0.5" y="0.5" width="23" height="23" rx="5" fill="#000000"/>
+                  <path d="M8 6.5L16 12L8 17.5" stroke="#ff671f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                Splunk DDSS
+              </div>
               <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/fur04x6" target="_blank" rel="noopener">Navvatic</a><a class="sub-link" href="https://app.vidcast.io/share/bcf65c50-6528-46c6-b5bf-1794df1fcba3" target="_blank" rel="noopener">Video</a></div>
             </div>
           </div>
@@ -391,15 +453,37 @@
           <div class="cat-title">Lakehouses</div>
           <div class="store-row">
             <div class="store-wrap">
-              <div class="store snow">SnowFlake</div>
+              <div class="store snow">
+                <svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <g stroke="#29b5e8" stroke-width="1.6" stroke-linecap="round">
+                    <line x1="12" y1="2" x2="12" y2="22"/>
+                    <line x1="3.5" y1="7" x2="20.5" y2="17"/>
+                    <line x1="20.5" y1="7" x2="3.5" y2="17"/>
+                  </g>
+                </svg>
+                Snowflake
+              </div>
               <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/i5z071m" target="_blank" rel="noopener">Navvatic</a><a class="sub-link" href="https://app.vidcast.io/share/32589e80-23f7-43a8-bfa4-d5105799b9a3" target="_blank" rel="noopener">Video</a></div>
             </div>
             <div class="store-wrap">
-              <div class="store dbx">Databricks</div>
+              <div class="store dbx">
+                <svg width="16" height="14" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 5l10-3 10 3-10 3-10-3z" fill="#ff3621"/>
+                  <path d="M2 10.5l10-3 10 3-10 3-10-3z" fill="none" stroke="#ff3621" stroke-width="1.4"/>
+                  <path d="M2 16l10-3 10 3-10 3-10-3z" fill="none" stroke="#ff3621" stroke-width="1.4"/>
+                </svg>
+                Databricks
+              </div>
               <div class="sub-links"><span class="sub-link-wrap"><span class="sub-link soon">Navvatic</span><span class="soon-badge">SOON</span></span><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
             <div class="store-wrap">
-              <div class="store asl">Amazon Security Lake</div>
+              <div class="store asl">
+                <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 15c4 2.4 12 2.4 16 0" stroke="#fdba74" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+                  <path d="M17 13.3l2.6 1.2-1 2.7" stroke="#fdba74" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                Amazon Security Lake
+              </div>
               <div class="sub-links"><a class="sub-link" href="https://cisco-full-stack-observability.navattic.com/o7300zp0?g=cmsdlyxpa088t04jv64m26lvx&amp;s=0" target="_blank" rel="noopener">Navvatic</a><span class="sub-link-wrap"><span class="sub-link soon">Video</span><span class="soon-badge">SOON</span></span></div>
             </div>
           </div>
