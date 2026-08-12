@@ -28,6 +28,21 @@
           filter 220ms ease, transform 220ms ease;
       }
 
+      .brand-logo-clickable {
+        cursor: pointer;
+      }
+
+      .brand-logo-clickable:hover {
+        filter: brightness(1.2);
+        transform: scale(1.06);
+      }
+
+      .brand-logo-clickable:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.6);
+        outline-offset: 4px;
+        border-radius: 4px;
+      }
+
       html[data-brand="cisco"] body {
         background: #041220;
       }
@@ -263,8 +278,28 @@
       element.closest("input, textarea, select, [contenteditable='true']");
   }
 
+  function bindLogoClick(selector, brand) {
+    var el = document.querySelector(selector);
+    if (!el) return;
+    el.classList.add("brand-logo-clickable");
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", "Switch to " + brand + " theme");
+    el.addEventListener("click", function () {
+      applyBrand(brand, { notify: true });
+    });
+    el.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        applyBrand(brand, { notify: true });
+      }
+    });
+  }
+
   injectThemeStyles();
   applyBrand(localStorage.getItem(STORAGE_KEY), { persist: false });
+  bindLogoClick(".brand-logo.cisco", CISCO);
+  bindLogoClick(".brand-logo.splunk", SPLUNK);
 
   window.addEventListener("storage", function (event) {
     if (event.key !== STORAGE_KEY) return;
