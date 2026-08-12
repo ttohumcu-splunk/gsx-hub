@@ -279,7 +279,7 @@
 
   document.addEventListener("keydown", function (event) {
     var isThemeShortcut = event.ctrlKey && event.altKey && !event.shiftKey &&
-      !event.metaKey && event.key.toLowerCase() === "t";
+      !event.metaKey && (event.code === "KeyT" || event.key.toLowerCase() === "t");
 
     if (!isThemeShortcut || isEditable(event.target)) return;
     event.preventDefault();
