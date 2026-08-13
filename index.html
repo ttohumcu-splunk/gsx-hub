@@ -210,6 +210,25 @@
   .store.snow { background: rgba(56,189,248,0.1); color: #7dd3fc; }
   .store.asl { background: rgba(249,115,22,0.1); color: var(--orange); }
 
+  .usecase {
+    flex: 1 1 30%;
+    min-width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(232,121,249,0.08);
+    color: var(--pink);
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .usecase:hover { background: rgba(232,121,249,0.16); border-color: var(--pink); transform: translateY(-1px); }
+
   .last-updated {
     text-align: center;
     font-size: 11px;
@@ -797,6 +816,17 @@
       <div class="branch">
         <div class="connector-line"></div>
         <div class="branch-label fed">FEDERATED SEARCH</div>
+
+        <div class="category">
+          <div class="cat-title">Use Cases</div>
+          <div class="store-row">
+            <a class="usecase" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi5666vg000204l57zergz1m&amp;s=0" target="_blank" rel="noopener">Security Forensics</a>
+            <a class="usecase" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi6c5jgl000504juhkw30lt2&amp;s=0" target="_blank" rel="noopener">Data Enrichment</a>
+            <a class="usecase" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi6ilcz4000004l1ep3v3knd&amp;s=0" target="_blank" rel="noopener">Threat Reporting, Dashboarding &amp; Alerting</a>
+            <a class="usecase" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi72iatw000204l55pnggzqd&amp;s=0" target="_blank" rel="noopener">Data Exploration &amp; Statistical Analysis</a>
+            <a class="usecase" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi73q7x3000404l1ego4277f&amp;s=0" target="_blank" rel="noopener">Compliance, Trial &amp; Audit</a>
+          </div>
+        </div>
 
         <div class="category">
           <div class="cat-title">Object Stores</div>
