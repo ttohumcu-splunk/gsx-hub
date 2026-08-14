@@ -120,12 +120,19 @@
   .tier .desc { display: block; font-weight: 400; font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   .tier.index { background: rgba(96,165,250,0.06); color: var(--blue); }
   .tier.raw { background: rgba(110,231,183,0.06); color: var(--mint); }
-  .df-logo-badge {
+  .df-logo-slot {
+    position: relative;
     width: 300px;
     height: 300px;
     max-width: 92%;
-    object-fit: contain;
     margin: -10px auto 0;
+  }
+  .df-logo-badge {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
     pointer-events: none;
     opacity: 0;
@@ -821,7 +828,10 @@
             </div>
           </div>
         </div>
-        <img id="df-logo-badge" class="df-logo-badge" src="Assets/DF-Logo.png" alt="Cisco Data Fabric Team" aria-hidden="true">
+        <div class="df-logo-slot">
+          <img id="df-logo-badge" class="df-logo-badge" src="Assets/DF-Logo.png" alt="Cisco Data Fabric Team" aria-hidden="true">
+          <img id="qr-badge" class="df-logo-badge" src="Assets/qr.png" alt="QR code" aria-hidden="true">
+        </div>
       </div>
 
       <div class="branch">
@@ -983,21 +993,29 @@
   </script>
   <script>
     (function () {
-      var badge = document.getElementById("df-logo-badge");
-      if (!badge) return;
+      var dfBadge = document.getElementById("df-logo-badge");
+      var qrBadge = document.getElementById("qr-badge");
+      if (!dfBadge || !qrBadge) return;
+      var badges = [dfBadge, qrBadge];
 
       function isEditable(element) {
         return element && typeof element.closest === "function" &&
           element.closest("input, textarea, select, [contenteditable='true']");
       }
 
-      document.addEventListener("keydown", function (event) {
-        var isBadgeShortcut = event.ctrlKey && event.altKey && !event.shiftKey &&
-          !event.metaKey && (event.code === "KeyL" || event.key.toLowerCase() === "l");
+      function toggleBadge(badge) {
+        var willShow = !badge.classList.contains("show");
+        badges.forEach(function (b) { b.classList.toggle("show", willShow && b === badge); });
+      }
 
-        if (!isBadgeShortcut || isEditable(event.target)) return;
+      document.addEventListener("keydown", function (event) {
+        if (!event.ctrlKey || !event.altKey || event.shiftKey || event.metaKey) return;
+        var isDfShortcut = event.code === "KeyL" || event.key.toLowerCase() === "l";
+        var isQrShortcut = event.code === "KeyQ" || event.key.toLowerCase() === "q";
+
+        if ((!isDfShortcut && !isQrShortcut) || isEditable(event.target)) return;
         event.preventDefault();
-        badge.classList.toggle("show");
+        toggleBadge(isDfShortcut ? dfBadge : qrBadge);
       });
     })();
   </script>
