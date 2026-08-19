@@ -63,11 +63,19 @@
   <h1>CDF Architecture</h1>
   <div class="subtitle">Search and Federation Across Locations</div>
 
-  <a class="back-link" href="index.html">&larr; Back to Platform Hub Demos</a>
+  <a class="back-link" id="back-link" href="index.html?unlocked=1">&larr; Back to Platform Hub Demos</a>
 
   <div class="arch-frame">
     <img src="Assets/arch.png" alt="CDF Architecture — Search and Federation Across Locations">
   </div>
+
+  <script>
+    (function () {
+      var from = new URLSearchParams(location.search).get("from");
+      var link = document.getElementById("back-link");
+      if (from === "share") link.href = "share.html";
+    })();
+  </script>
 
 </body>
 </html>
