@@ -50,6 +50,22 @@
   }
   h1 { text-align: center; font-size: 28px; margin-bottom: 4px; }
   .subtitle { text-align: center; color: var(--text-dim); margin-bottom: 36px; font-size: 17px; }
+  .demo-link-row { text-align: center; margin: 0 0 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .demo-link:hover { background: rgba(255,255,255,0.09); border-color: var(--blue); transform: translateY(-1px); }
 
   .brand-lockup { display: flex; justify-content: center; align-items: center; gap: 28px; margin-bottom: 20px; }
   .brand-lockup .brand-item { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: 0.02em; color: var(--text); }
@@ -511,6 +527,19 @@
     text-align: center;
   }
 
+  #page-content .demo-link {
+    background: rgba(39, 57, 78, 0.78);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+  }
+
+  #page-content .demo-link:hover {
+    background: rgba(48, 82, 108, 0.98);
+    box-shadow: 0 14px 28px rgba(2, 200, 255, 0.24), 0 9px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
   #page-content .diagram {
     max-width: none;
   }
@@ -777,6 +806,10 @@
 
   <h1>Platform Hub Demos</h1>
   <div class="subtitle">CDF Architecture — One Analytics Platform, Many Data Stores — Federated Search</div>
+  <div class="demo-link-row">
+    <a class="demo-link" href="https://tinyurl.com/gsxhubdemo" target="_blank" rel="noopener">Share this demo — tinyurl.com/gsxhubdemo</a>
+    <a class="demo-link" href="architecture.html" target="_blank" rel="noopener">View Full Architecture</a>
+  </div>
 
   <div class="diagram">
     <div class="platform">
