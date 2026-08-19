@@ -1010,8 +1010,7 @@
 
   <script>
     (function () {
-      var VALID_USER = "splunker";
-      var VALID_PASS = "hubdemo";
+      var VALID_HASH = "4c62eda71f1c60d345c58b9741119140d302e1f8b34083241a88a8a5ded8c521";
       var gate = document.getElementById("auth-gate");
       var content = document.getElementById("page-content");
 
@@ -1020,16 +1019,24 @@
         content.style.display = "block";
       }
 
+      async function sha256Hex(text) {
+        var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(function (b) {
+          return b.toString(16).padStart(2, "0");
+        }).join("");
+      }
+
       var cameFromUnlockedPage = new URLSearchParams(location.search).get("unlocked") === "1";
       if (sessionStorage.getItem("hubdemo-auth") === "ok" || cameFromUnlockedPage) {
         sessionStorage.setItem("hubdemo-auth", "ok");
         unlock();
       }
 
-      document.getElementById("auth-submit").addEventListener("click", function () {
+      document.getElementById("auth-submit").addEventListener("click", async function () {
         var user = document.getElementById("auth-user").value;
         var pass = document.getElementById("auth-pass").value;
-        if (user === VALID_USER && pass === VALID_PASS) {
+        var hash = await sha256Hex(user + ":" + pass);
+        if (hash === VALID_HASH) {
           sessionStorage.setItem("hubdemo-auth", "ok");
           unlock();
         } else {
