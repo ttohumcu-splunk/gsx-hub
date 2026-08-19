@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<title>CDF Architecture — GSX Platform Demo Booth</title>
+<title>CDF Federated Architecture — GSX Platform Demo Booth</title>
 <style>
   @font-face {
     font-family: "Inter";
@@ -22,16 +22,19 @@
     flex-direction: column;
     align-items: center;
     padding: 40px 20px 60px;
+    position: relative;
   }
   .brand-lockup { display: flex; justify-content: center; align-items: center; gap: 28px; margin-bottom: 20px; }
   .brand-lockup img { height: 28px; display: block; }
   h1 { text-align: center; font-size: clamp(22px, 3vw, 34px); margin: 4px 0 6px; font-weight: 600; }
   .subtitle { text-align: center; color: #94a3b8; font-size: 15px; margin: 0 0 28px; }
   .back-link {
+    position: absolute;
+    top: 24px;
+    right: 24px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 24px;
     padding: 8px 16px;
     border-radius: 999px;
     border: 1px solid #2d3a52;
@@ -60,10 +63,10 @@
     <img src="Assets/splunk-logo.png" alt="Splunk">
   </div>
 
-  <h1>CDF Architecture</h1>
-  <div class="subtitle">Search and Federation Across Locations</div>
-
   <a class="back-link" id="back-link" href="index.html?unlocked=1">&larr; Back to Platform Hub Demos</a>
+
+  <h1>CDF Federated Architecture</h1>
+  <div class="subtitle">Search and Federation Across Locations</div>
 
   <div class="arch-frame">
     <img src="Assets/arch.png" alt="CDF Architecture — Search and Federation Across Locations">

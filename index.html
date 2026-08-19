@@ -49,23 +49,14 @@
   }
   h1 { text-align: center; font-size: 28px; margin-bottom: 4px; }
   .subtitle { text-align: center; color: var(--text-dim); margin-bottom: 36px; font-size: 17px; }
-  .demo-link-row { text-align: center; margin: 10px 0 0; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-  .platform-link-row { text-align: center; margin-top: 12px; }
-  .demo-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.05);
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 700;
+  .demo-link-row { text-align: center; margin: 10px 0 0; }
+  .share-url {
+    color: var(--text-dim);
+    font-size: 12px;
+    font-weight: 500;
     text-decoration: none;
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   }
-  .demo-link:hover { background: rgba(255,255,255,0.09); border-color: var(--blue); transform: translateY(-1px); }
+  .share-url:hover { color: var(--text); text-decoration: underline; }
 
   .brand-lockup { display: flex; justify-content: center; align-items: center; gap: 28px; margin-bottom: 20px; }
   .brand-lockup .brand-item { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: 0.02em; color: var(--text); }
@@ -82,6 +73,22 @@
     margin-bottom: 4px;
   }
   .platform .title { font-size: 20px; font-weight: 800; }
+  .title-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .arch-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .arch-btn:hover { background: rgba(255,255,255,0.09); border-color: var(--blue); transform: translateY(-1px); }
   .platform .sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
   .pill-row {
     display: grid;
@@ -527,18 +534,8 @@
     text-align: center;
   }
 
-  #page-content .demo-link {
-    background: rgba(39, 57, 78, 0.78);
-    color: #fff;
-    border: 0;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
-  }
-
-  #page-content .demo-link:hover {
-    background: rgba(48, 82, 108, 0.98);
-    box-shadow: 0 14px 28px rgba(2, 200, 255, 0.24), 0 9px 20px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-  }
+  #page-content .share-url { color: rgba(255, 255, 255, 0.55); }
+  #page-content .share-url:hover { color: #fff; }
 
   #page-content .diagram {
     max-width: none;
@@ -561,6 +558,19 @@
 
   #page-content .platform .title-powered {
     color: #fff;
+  }
+
+  #page-content .arch-btn {
+    background: rgba(39, 57, 78, 0.78);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+  }
+
+  #page-content .arch-btn:hover {
+    background: rgba(48, 82, 108, 0.98);
+    box-shadow: 0 14px 28px rgba(2, 200, 255, 0.24), 0 9px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
   }
 
   #page-content .platform .sub {
@@ -857,8 +867,10 @@
 
   <div class="diagram">
     <div class="platform">
-      <div class="title"><span class="title-cisco">Cisco Data Fabric</span> <span class="title-powered">powered by Splunk Platform</span></div>
-      <div class="platform-link-row"><a class="demo-link" href="architecture.html?from=index" target="_blank" rel="noopener">View Full Architecture</a></div>
+      <div class="title-row">
+        <div class="title"><span class="title-cisco">Cisco Data Fabric</span> <span class="title-powered">powered by Splunk Platform</span></div>
+        <a class="arch-btn" href="architecture.html?from=index" target="_blank" rel="noopener">Architecture</a>
+      </div>
     </div>
 
     <div class="split">
@@ -991,7 +1003,7 @@
     </div>
 
     <div id="last-updated" class="last-updated"></div>
-    <div class="demo-link-row"><a class="demo-link" href="https://tinyurl.com/gsxhubdemo" target="_blank" rel="noopener">Share this demo — tinyurl.com/gsxhubdemo</a></div>
+    <div class="demo-link-row"><a class="share-url" href="https://tinyurl.com/gsxhubdemo" target="_blank" rel="noopener">tinyurl.com/gsxhubdemo</a></div>
   </div>
 
   </div>
