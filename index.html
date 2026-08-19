@@ -200,6 +200,7 @@
   }
 
   .category {
+    position: relative;
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 12px 14px;
@@ -208,6 +209,21 @@
     width: 100%;
   }
   .category .cat-title { font-weight: 800; font-size: 13px; margin-bottom: 8px; }
+  .category-start-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--mint);
+    color: #0b1120;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    white-space: nowrap;
+  }
   .store-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .store-wrap { flex: 1 1 30%; min-width: 90px; }
   .store {
@@ -840,6 +856,7 @@
         <div class="branch-label fed">FEDERATED SEARCH</div>
 
         <div class="category">
+          <span class="category-start-badge">START HERE</span>
           <div class="cat-title">Use Cases</div>
           <div class="store-row">
             <a class="usecase" href="https://cisco-full-stack-observability.navattic.com/fss3-usecases?g=cmi5666vg000204l57zergz1m&amp;s=0" target="_blank" rel="noopener">Security Forensics</a>
